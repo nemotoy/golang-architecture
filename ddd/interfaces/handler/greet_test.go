@@ -7,8 +7,11 @@ import (
 	"testing"
 )
 
-func TestHelloHandler(t *testing.T) {
-	s := httptest.NewServer(http.HandlerFunc(HelloHandler()))
+func TestGreetHandler(t *testing.T) {
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		NewGreetHandler().Greet(w, r)
+	}))
+
 	defer s.Close()
 
 	res, err := http.Get(s.URL)
