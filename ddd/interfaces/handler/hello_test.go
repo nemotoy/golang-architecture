@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"io/ioutil"
@@ -8,7 +8,7 @@ import (
 )
 
 func TestHelloHandler(t *testing.T) {
-	s := httptest.NewServer(http.HandlerFunc(helloHandler()))
+	s := httptest.NewServer(http.HandlerFunc(HelloHandler()))
 	defer s.Close()
 
 	res, err := http.Get(s.URL)

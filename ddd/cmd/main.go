@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/nemotoy/golang-architecture/ddd/config"
+	"github.com/nemotoy/golang-architecture/ddd/interfaces/handler"
 )
 
 func main() {
@@ -21,15 +22,9 @@ func main() {
 
 func runServer(conf *config.Config) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", helloHandler())
+	mux.HandleFunc("/", handler.HelloHandler())
 
 	if err := http.ListenAndServe(fmt.Sprintf(":%d", conf.Port), mux); err != nil {
 		log.Printf("%v", err)
-	}
-}
-
-func helloHandler() func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello, world!"))
 	}
 }
