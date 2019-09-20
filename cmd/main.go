@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nemotoy/golang-architecture/ddd/config"
-	"github.com/nemotoy/golang-architecture/ddd/interfaces/handler"
+	"github.com/nemotoy/golang-architecture/config"
+	"github.com/nemotoy/golang-architecture/interfaces/handler"
 )
 
 func main() {

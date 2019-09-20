@@ -1,4 +1,4 @@
-module github.com/nemotoy/golang-architecture/ddd
+module github.com/nemotoy/golang-architecture
 
 require (
 	github.com/kelseyhightower/envconfig v1.4.0
