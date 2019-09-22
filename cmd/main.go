@@ -22,9 +22,8 @@ func main() {
 
 func runServer(conf *config.Config) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		handler.NewGreetHandler().Greet(w, r)
-	})
+	uh := handler.NewUserHandler()
+	mux.HandleFunc("/user", func(w http.ResponseWriter, r *http.Request) { uh.Get(w, r) })
 
 	if err := http.ListenAndServe(fmt.Sprintf(":%d", conf.Port), mux); err != nil {
 		log.Printf("%v", err)
